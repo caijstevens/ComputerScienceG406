@@ -1,0 +1,18 @@
+#ct 
+
+1. [[(WIP) Introduction to Logic]] 
+2. [[(WIP) Propositional Logic]] 
+3. [[(WIP) More Propositional Logic]] 
+4. [[(WIP) Natural Deduction]] 
+5. [[(WIP) More on Natural Deduction]] 
+6. [[(WIP) Resolution]] 
+7. [[(WIP) More on Resolution]] 
+8. [[(WIP) Introduction to SAT-Solving]] 
+9. [[(WIP) Clause Learning]] 
+10. [[(WIP) SAT, Resolution and Friends]] 
+11. [[(WIP) Solving problems with SAT-solvers]] 
+12. [[(WIP) Overview of First-Order Logic]] 
+13. [[(WIP) First-Order Logic - Syntax and Semantics]] 
+14. [[(WIP) First-Order Logic - Logical Equivalence]] 
+15. [[(WIP) First-Order Logic - Prenex Normal Form]] 
+16. [[(WIP) First-Order Resolution]] 

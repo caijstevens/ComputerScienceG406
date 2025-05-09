@@ -1,0 +1,12 @@
+#cs 
+1. [[(WIP) Introduction to the Little Minion Computer]] 
+2. [[(WIP) Programming with the Little Minion Computer]] 
+3. [[(WIP) The Von Neumann Architecture]] 
+4. [[MIPS - Main Characteristics, Registers, Instruction Types]] 
+5. [[MIPS - Memory Map and Addressing Modes]] 
+6. [[MIPS - Programming]] 
+7. [[ATmega328P - Registers, Memory Map, IO]]
+8. [[Programming in AVR Assembly]]
+9. [[(WIP) AVR Addressing Modes and Instruction Set]] 
+10. [[(WIP) CISC and RISC]] 
+11. [[(WIP) Pipelining]] 
