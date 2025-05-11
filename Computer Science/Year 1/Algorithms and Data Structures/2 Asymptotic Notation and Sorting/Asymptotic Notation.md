@@ -65,16 +65,16 @@ This also implies that $f(x)$ is $\Omega (g(x))$ if and only if $g(x)$ is $O(f(x
 
 ### Same Order Growth Rates
 
-Let f(x) and g(x) be functions from the set of real numbers to the set of real numbers. We say that f(x) is $\Theta (g(x))$ if f(x) is $O(g(x))$ and f(x) is $\Omega (g(x))$.
+Let $f(x)$ and $g(x)$ be functions from the set of real numbers to the set of real numbers. We say that f(x) is $\Theta (g(x))$ if $f(x)$ is $O(g(x))$ and $f(x)$ is $\Omega (g(x))$.
 
 This also means that f(x) is O(g(x)) and g(x) is O(f(x)).
 
 ### Little-o notation
 A tool used for disregarding or neglecting small-order terms.
 
-Let f(x) and g(x) be functions from the set of real numbers to the set of real numbers. f(x) is o(g(x)) when $$\lim_{x\to\infty} \frac{f(x)}{g(x)}=0$$ The fraction above tends towards zero as x tends towards infinity.
+Let $f(x)$ and $g(x)$ be functions from the set of real numbers to the set of real numbers. $f(x)$ is $o(g(x))$ when $$\lim_{x\to\infty} \frac{f(x)}{g(x)}=0$$ The fraction above tends towards zero as x tends towards infinity.
 
-f(x) being o(g(x)) implies that f(x) is O(g(x)).
+$f(x)$ being $o(g(x))$ implies that $f(x)$ is $O(g(x))$.
 
 If f(x) is **not** O(g(x)), there must be a value of x > k such that $|f(x)| > C \cdot |g(x)|$ . Therefore either $\lim_{n\to\infty} \frac{f(x)}{g(x)}$ does not exist or it is not 0. Therefore f(x) is not o(g(x)).
 
