@@ -88,5 +88,5 @@ $\omega$ is to o what $\Omega$ is to O
 ### General rules
 
 1. If $f_1(x)$ is $o(g(x))$ and $f_2(x)$ is $o(g(x))$, then $f_1(x) + f_2(x)$ is $o(g(x))$.
-2. If $f_1(x)$ is $O(g(x))$ and $f_2(x) is $o(g(x))$, then $f_1(x) + f_2(x)$ is $O(g(x))$.
+2. If $f_1(x)$ is $O(g(x))$ and $f_2(x)$ is $o(g(x))$, then $f_1(x) + f_2(x)$ is $O(g(x))$.
 3. If $f_1(x)$ is $\Theta (g(x))$ and $f_2(x)$ is $o(g(x))$, then $f_1(x) + f_2(x)$ is $\Theta (g(x))$. 

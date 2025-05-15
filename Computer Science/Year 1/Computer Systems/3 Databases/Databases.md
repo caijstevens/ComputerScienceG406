@@ -1,8 +1,8 @@
 #cs 
 
 1. [[(WIP) Introduction]] 
-2. [[(WIP) Database Design]] 
-3. [[(WIP) Relational Data Model]] 
+2. [[Database Design]] 
+3. [[Relational Data Model]] 
 4. [[(WIP) Entity Relationship Model]] 
 5. [[(WIP) Functional Dependencies]] 
 6. [[(WIP) Normalisation]] 

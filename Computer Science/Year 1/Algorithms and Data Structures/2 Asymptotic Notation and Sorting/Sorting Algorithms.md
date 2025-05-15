@@ -18,7 +18,8 @@ Time complexity: $O(n^2)$
 
 **Invariant**: after the iteration for i of the outer for-loop, positions $i,...,n$ contain the overall $n - i + 1$ many largest elements in order.
 
-**Time complexity**: $(n-1) + (n-2)  + ... + 2 + 1 = O(n^2)$.
+**Time complexity**: 
+$(n-1) + (n-2)  + ... + 2 + 1 = O(n^2)$.
 
 **Variation**: Terminate if no swap executed during inner for-loop.
 
