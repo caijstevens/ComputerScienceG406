@@ -16,5 +16,5 @@
 14. [[(WIP) Inner Product Spaces]] 
 15. [[(WIP) Orthogonal and Orthonormal Bases, Gram-Schmidt Process]] 
 16. [[(WIP) QR Decomposition]] 
-17. [[(WIP) Linear Regression]] 
+17. [[Computer Science/Year 1/Mathematics for Computer Systems/2 Linear Algebra/(WIP) Linear Regression]] 
 18. [[(WIP) Spectral Decomposition]] 
