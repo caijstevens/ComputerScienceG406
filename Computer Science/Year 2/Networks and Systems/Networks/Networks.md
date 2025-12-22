@@ -3,4 +3,6 @@
 - [[Introduction]]
 - [[Core Concepts of Computer Networks]]
 - [[Application Layer]]
-- [[(WIP) Transport Layer]]
+- [[Transport Layer]]
+- [[Network Layer]]
+- [[(WIP) Medium Access Control Sublayer]]

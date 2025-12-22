@@ -1,4 +1,4 @@
-#wip #nas 
+ #nas 
 
 # Protocols and Services 
 
@@ -71,3 +71,83 @@ Characteristics of unreliable channel determines complexity of RDT protocol
 ![[Screenshot 2025-11-17 at 12.29.19.png]]
 - reliable protocol (TCP) may be implemented on unreliable network layer (IP)
 - reliable transfer over UDP requires added reliability at application layer and app-specific error recovery 
+
+Reliable transfer over reliable channel: rdt1.0
+- separate FSMs for sender, receiver  ![[Screenshot 2025-12-22 at 13.57.29.png]]
+- set up a sender, implements reliable transfer `rdt_send`, uses unreliable channel `udt_send`
+- set up receiver, implements reliable receiver `rdt_rcv`
+- for now, do not lose or corrupt packets
+
+Channel with bit errors: rdt2.0
+- underlying channel may flip bits in packet, checksum to detect
+- **acknowledgements (ACK)**: receiver tells sender that segments received OK
+- **NAK**: receiver tells sender that segments had errors 
+- sender retransmits segment on receipt of NAK
+
+rdt2.0's fatal flaw = if ACK/NAK corrupted
+- sender doesn't know what happened at receiver 
+- can't retransmit, possible duplicate
+
+# ARQ (Automatic Repeat reQuest)
+
+Using ACK and NAK is ARQ protocols 
+- error detection (sender embeds extra bits in data piece)
+- feedback (receiver provides sender with feedback)
+- retransmission (sender retransmits erroneous data piece) ![[Screenshot 2025-12-22 at 14.12.48.png]]
+Channels with errors and loss: rdt3.0 
+- new assumption that underlying channel can also lose packets (data, ACKs)
+- checksum, sequence numbers, ACKs, retransmissions not enough 
+
+Approach: sender waits reasonable amount of time for ACK 
+- retransmits if no ACK received in this time 
+- if packet delayed, not lost:
+	- retransmission duplicate but sequence numbers handles this 
+	- receiver must specify sequence numbers of packets being ACKd
+- requires countdown timer 
+![[Screenshot 2025-12-22 at 14.17.57.png]]
+![[Screenshot 2025-12-22 at 14.18.11.png]]
+
+# Pipelined Protocols 
+
+![[Screenshot 2025-12-22 at 14.18.48.png]]
+
+Range of sequence numbers must be increased
+- can be multiple, in-transit, unackd packets 
+- unique sequence number 
+
+Multiple packets buffering at sender\receiver 
+- sender buffers packets transmitted but not yet acknowledged 
+- receiver buffers correctly received packets before processing to upper layer 
+- buffering requirements depend on manner in which data transfer protocol responds to lost, corrupted and overly delayed packets.
+
+**Go-back-N** protocol:
+- sender sends multiple packets without waiting for ACK 
+- sender can have up to $N$ unpacked packets in pipeline 
+- receiver sends cumulative ACKs
+- sender has timer for oldest unpacked packet, if expires, retransmit all unpacked packets 
+![[Screenshot 2025-12-22 at 14.27.30.png]]
+
+**Selective Repeat** protocol:
+- sender can have up to $N$ unpacked packets in pipeline
+- receiver sends individual ACK for each packet 
+- sender maintains timer for each unpacked packet 
+- when timer expires, retransmit only that unpacked packet 
+- receiver individually acknowledges all correctly received packets 
+- sender only resends packets for which ACK not received 
+- sender window of $N$ consecutive sequence numbers 
+![[Screenshot 2025-12-22 at 14.28.43.png]]
+Sender:
+- data from above 
+- timeout($n$) means resend segment $n$, restart timer
+- ACK($n$) in $[sendbase, sendbase+(N-1)]$:
+	- mark segment $n$ as received
+	- if $n$ is smallest unACKed segment, advance window base to next unACKed sequence number 
+
+Receiver:
+- segment $n$ in $[rcvbase, rcvbase+(N-1)]$:
+	- send ACK($n$)
+	- out-of-order: buffer 
+	- in-order: deliver, advance window to next unreceived packet 
+- segment $n$ in $[rcvbase-N, rcvbase-1]$:
+	- ACK($n$)
+- otherwise ignore
