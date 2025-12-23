@@ -1,3 +1,4 @@
+#nas
 # MAC Sublayer Functions
 
 >[!info] MAC Layer 
@@ -23,6 +24,8 @@ Static Channel Allocations:
 - data traffic often bursty: long time no data, short time high data 
 - if many users do not use allocated channel capacity, channels will be idle most of the time
 
+# Dynamic Channel Allocations
+
 Dynamic Channel Allocations:
 - no user assigned fixed frequency/time slot 
 - all users dynamically assigned frequency/time slot, depending upon user requirements
@@ -36,6 +39,8 @@ Random Access Protocols:
 - if two stations transmit at same time, collision occurs, frames lost 
 - e.g. ALOHA, CSMA, CSMA/CD, CSMA/CA
 
+### ALOHA
+
 Pure ALOHA: stations transmit frames whenever they have data to send 
 - collision if simultaneous transmission, channel occupation or frame overlap
 - collision requires full retransmission 
@@ -44,6 +49,8 @@ Slotted ALOHA: time divided to frame-size slots
 - station can send frame only at beginning of slot, only one frame per slot 
 - if any station not able to place frame onto channel, has to wait to next slot 
 - collision if two stations try to send at beginning of same slot 
+
+### CSMA
 
 CSMA (Carrier Sense Multiple Access) designed to minimise collision chances
 - station senses carrier or channel before transmission (checks if idle or busy)
@@ -69,3 +76,29 @@ p-Persistent CSMA:
 - used in slotted channels 
 - if channel busy, wait until next time slot and start over 
 - if idle, transmit with probability $p$ and with probability $(1-p)$ defer until next slot and start over.
+
+CSMA/CD: Carrier Sense Multiple Access with Collision Detection 
+- station senses channel while data being transmitted 
+- if collision detected, transmission aborted, wait random time to retry
+- jam signal sent, alerts other stations, no other stations transmit immediately after 
+
+### CAP
+
+Controlled Access Protocol (CAP): stations consult each other to find which has right to send 
+- collision-free 
+- cannot send without authorisation
+- e.g. bitmap, token passing, binary countdown 
+
+Bitmap: before sending data, all stations state if they have data 
+- sent one by one in order 
+![[Screenshot 2025-12-23 at 15.08.04.png]]
+
+Token passing:
+- tokens sent round ring defines sending order 
+- station may send frame before passing token
+![[Screenshot 2025-12-23 at 15.08.35.png]]
+
+Binary countdown: improved bitmap
+- stations send address in contention slot
+- channel ORs bits, give up when send 0 but see 1
+- station that sees full address is next to send 
